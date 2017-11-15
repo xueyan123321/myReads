@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 
 function BookTitle(props){
     return (
@@ -11,5 +11,5 @@ BookTitle.propTypes = {
     title: PropTypes.string.isRequired
 }
 
-export  default BookTitle
+export  default BookTitle;
 

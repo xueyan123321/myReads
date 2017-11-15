@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom'
-import PropTypes from 'prop-types'
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 class SearchBooksBar extends  Component{
     state={
@@ -35,4 +35,4 @@ class SearchBooksBar extends  Component{
 SearchBooksBar.proTypes = {
     getSearchResults: PropTypes.func.isRequired
 }
-export default SearchBooksBar
+export default SearchBooksBar;

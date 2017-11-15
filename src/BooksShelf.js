@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import BooksShelfTitle from './BooksShelfTitle'
-import BooksShelfBooks from './BooksShelfBooks'
-import PropTypes from 'prop-types'
+import BooksShelfTitle from './BooksShelfTitle';
+import BooksShelfBooks from './BooksShelfBooks';
+import PropTypes from 'prop-types';
 
 class BooksShelf extends Component {
     render() {
@@ -19,4 +19,4 @@ BooksShelf.propTypes = {
     books: PropTypes.array.isRequired
 }
 
-export default BooksShelf
+export default BooksShelf;

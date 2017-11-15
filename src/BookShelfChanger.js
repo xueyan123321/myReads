@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class BookShelfChanger extends Component {
     render(){
@@ -24,4 +24,4 @@ BookShelfChanger.propTypes = {
     status: PropTypes.string.isRequired
 }
 
-export default BookShelfChanger
+export default BookShelfChanger;

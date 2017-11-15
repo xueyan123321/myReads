@@ -1,8 +1,8 @@
-import React, { Component } from 'react'
-import BookTop from './BookTop'
-import BookTitle from './BookTitle'
-import BookAuthors from './BookAuthors'
-import PropTypes from 'prop-types'
+import React, { Component } from 'react';
+import BookTop from './BookTop';
+import BookTitle from './BookTitle';
+import BookAuthors from './BookAuthors';
+import PropTypes from 'prop-types';
 
 class BooksShelfBooks extends Component {
     render() {
@@ -28,4 +28,4 @@ BooksShelfBooks.propTypes = {
     books: PropTypes.array.isRequired
 }
 
-export default BooksShelfBooks
+export default BooksShelfBooks;

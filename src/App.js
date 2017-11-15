@@ -1,17 +1,17 @@
-import React from 'react'
-import { Route } from 'react-router-dom'
-import * as BooksAPI from './BooksAPI'
-import ListBooksTitle from './ListBooksTitle'
-import SearchBooksBar from './SearchBooksBar'
-import SearchBooksResults from './SearchBooksResults'
-import BooksShelf from './BooksShelf'
-import Search from './Search'
-import './App.css'
+import React from 'react';
+import { Route } from 'react-router-dom';
+import * as BooksAPI from './BooksAPI';
+import ListBooksTitle from './ListBooksTitle';
+import SearchBooksBar from './SearchBooksBar';
+import SearchBooksResults from './SearchBooksResults';
+import BooksShelf from './BooksShelf';
+import Search from './Search';
+import './App.css';
 
-const title = 'myReads'
-const current = 'Currently Reading'
-const want = 'Want to Read'
-const read = 'Read'
+const title = 'myReads';
+const current = 'Currently Reading';
+const want = 'Want to Read';
+const read = 'Read';
 
 
 class BooksApp extends React.Component {
@@ -27,46 +27,41 @@ class BooksApp extends React.Component {
   }
   componentDidMount(){
     BooksAPI.getAll().then((books)=>{
-        console.log('books', books)
-        this.setState({books})
+        this.setState({books});
     })
   }
   changeBookShelf = (bookshelf, bookid)=>{
-    console.log('bookshelf', bookshelf)
-    console.log('bookid', bookid)
       this.setState((state)=>{
           state.books.forEach((book)=> {
             if(book.id === bookid){
-                book.shelf = bookshelf
-                BooksAPI.update(book, bookshelf)
+                book.shelf = bookshelf;
+                BooksAPI.update(book, bookshelf);
             }
-          })
+          });
           state.searchResults.forEach((book)=>{
               if(book.id === bookid){
-                  book.shelf = bookshelf
-                  state.books.push(book)
-                  BooksAPI.update(book, bookshelf)
+                  book.shelf = bookshelf;
+                  state.books.push(book);
+                  BooksAPI.update(book, bookshelf);
               }
           })
       })
   }
   getSearchResults = (query)=>{
-      console.log('input Value',query)
       BooksAPI.search(query, 15).then((books)=>{
-          console.log('books', books)
           if(books && books.error !== 'empty query'){
               books.map((book)=>{
-                  book.shelf = 'none'
+                  book.shelf = 'none';
                   this.state.books.forEach((librarybook)=>{
                       if(book.id === librarybook.id){
-                          book.shelf = librarybook.shelf
+                          book.shelf = librarybook.shelf;
                       }
-                  })
+                  });
               })
           } else {
-              books = []
+              books = [];
           }
-          this.setState({searchResults:books})
+          this.setState({searchResults:books});
       })
   }
   render() {
@@ -78,17 +73,18 @@ class BooksApp extends React.Component {
                 <SearchBooksResults booksResults={this.state.searchResults} changeBookShelf={this.changeBookShelf}></SearchBooksResults>
               </div>)
         } />
-        <Route path='/' exact render={()=>(<div className="list-books">
-          <ListBooksTitle title={title}></ListBooksTitle>
-          <div className="list-books-content">
-            <div>
-              <BooksShelf booksShelfTitle={current} books={this.state.books.filter(book => book.shelf === 'currentlyReading')} changeBookShelf={this.changeBookShelf}></BooksShelf>
-              <BooksShelf booksShelfTitle={want} books={this.state.books.filter(book=> book.shelf === 'wantToRead')} changeBookShelf={this.changeBookShelf}></BooksShelf>
-              <BooksShelf booksShelfTitle={read} books={this.state.books.filter(book=> book.shelf === 'read')} changeBookShelf={this.changeBookShelf}></BooksShelf>
+        <Route path='/' exact render={()=>(
+            <div className="list-books">
+                <ListBooksTitle title={title}></ListBooksTitle>
+                <div className="list-books-content">
+                    <div>
+                      <BooksShelf booksShelfTitle={current} books={this.state.books.filter(book => book.shelf === 'currentlyReading')} changeBookShelf={this.changeBookShelf}></BooksShelf>
+                      <BooksShelf booksShelfTitle={want} books={this.state.books.filter(book=> book.shelf === 'wantToRead')} changeBookShelf={this.changeBookShelf}></BooksShelf>
+                      <BooksShelf booksShelfTitle={read} books={this.state.books.filter(book=> book.shelf === 'read')} changeBookShelf={this.changeBookShelf}></BooksShelf>
+                    </div>
+                </div>
+                <Search></Search>
             </div>
-          </div>
-          <Search></Search>
-        </div>
           )
         }/>
       </div>
@@ -96,4 +92,4 @@ class BooksApp extends React.Component {
   }
 }
 
-export default BooksApp
+export default BooksApp;

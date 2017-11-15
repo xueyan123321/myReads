@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 function ListBooksTitle(props){
     return (
@@ -8,4 +8,4 @@ function ListBooksTitle(props){
     )
 }
 
-export default ListBooksTitle
+export default ListBooksTitle;

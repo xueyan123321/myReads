@@ -1,10 +1,10 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from 'react';
+import PropTypes from 'prop-types';
 
 function BookAuthors(props){
     return (
         <div className="book-authors">{props.authors}</div>
-    )
+    );
 }
 
 BookAuthors.propTypes = {
@@ -12,4 +12,4 @@ BookAuthors.propTypes = {
 }
 
 
-export default BookAuthors
+export default BookAuthors;

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import BookTop from './BookTop'
-import BookTitle from './BookTitle'
-import BookAuthors from './BookAuthors'
-import PropTypes from 'prop-types'
+import BookTop from './BookTop';
+import BookTitle from './BookTitle';
+import BookAuthors from './BookAuthors';
+import PropTypes from 'prop-types';
 
 class SearchBooksResults extends Component {
     render(){
@@ -28,4 +28,4 @@ SearchBooksResults.propTypes ={
     booksResults: PropTypes.array.isRequired
 }
 
-export default SearchBooksResults
+export default SearchBooksResults;
