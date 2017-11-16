@@ -18,6 +18,6 @@ BookTop.propTypes ={
     image:PropTypes.string.isRequired,
     status: PropTypes.string.isRequired,
     id: PropTypes.string.isRequired,
-    changBookShelf: PropTypes.func.isRequired
+    changeBookShelf: PropTypes.func.isRequired
 }
 export default BookTop;
