@@ -12,9 +12,9 @@ class SearchBooksResults extends Component {
                     {this.props.booksResults.length !== 0&&this.props.booksResults.map((book, index)=>(
                         <li key={index}>
                             <div className="book">
-                                <BookTop image={book.imageLinks.thumbnail} status={book.shelf} id={book.id} changeBookShelf={this.props.changeBookShelf}></BookTop>
+                                <BookTop image={book.imageLinks?book.imageLinks.thumbnail:''} status={book.shelf} id={book.id} changeBookShelf={this.props.changeBookShelf}></BookTop>
                                 <BookTitle title={book.title}></BookTitle>
-                                <BookAuthors authors={book.authors}></BookAuthors>
+                                <BookAuthors authors={book.authors||[]}></BookAuthors>
                             </div>
                         </li>
                     ))}

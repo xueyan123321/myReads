@@ -23,7 +23,6 @@ class BooksApp extends React.Component {
     componentDidMount() {
         BooksAPI.getAll().then((books) => {
             this.setState({books});
-            console.log('books', books)
         })
     }
 
@@ -59,9 +58,9 @@ class BooksApp extends React.Component {
             if (books && books.error !== 'empty query') {
                 books.map((book) => {
                     book.shelf = 'none';
-                    this.state.books.forEach((librarybook) => {
-                        if (book.id === librarybook.id) {
-                            book.shelf = librarybook.shelf;
+                    this.state.books.forEach((myShelfBook) => {
+                        if (book.id === myShelfBook.id) {
+                            book.shelf = myShelfBook.shelf;
                         }
                     });
                 })

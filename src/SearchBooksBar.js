@@ -21,10 +21,11 @@ class SearchBooksBar extends  Component{
                         */}
                     <input type="text" placeholder="Search by title or author" value={this.state.query}
                             onChange={(e)=>{
-                                this.setState({
-                                    query: e.target.value.trim()
-                                })
-                                this.props.getSearchResults(this.state.query)
+                                    this.setState({
+                                        query: e.target.value.trim()
+                                    })
+                                    console.log('this.state.query', e.target.value.trim())
+                                    this.props.getSearchResults(e.target.value.trim())
                             }}/>
                 </div>
             </div>
