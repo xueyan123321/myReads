@@ -1,20 +1,19 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
 import * as BooksAPI from './BooksAPI';
-import ListBooksTitle from './ListBooksTitle';
 import SearchBooksBar from './SearchBooksBar';
 import SearchBooksResults from './SearchBooksResults';
 import BooksShelf from './BooksShelf';
 import Search from './Search';
 import './App.css';
 
-const title = 'myReads';
 const current = 'Currently Reading';
 const want = 'Want to Read';
 const read = 'Read';
 
 
 class BooksApp extends React.Component {
+    // books are the books in the book shelf.
     state = {
         books: [],
         searchResults: []
@@ -28,7 +27,7 @@ class BooksApp extends React.Component {
 
     /**
      * @description change the bookshelf of books and searchResults
-     * @param {string} bookshelf - the name of the bookshelf to change
+     * @param {string} bookshelf - the name of the bookshelf to change to
      * @param {string} bookid - the id of the book to change
      */
     changeBookShelf = (bookshelf, bookid) => {
@@ -56,7 +55,8 @@ class BooksApp extends React.Component {
     getSearchResults = (query) => {
         BooksAPI.search(query, 15).then((books) => {
             if (books && books.error !== 'empty query') {
-                books.map((book) => {
+                books.forEach((book) => {
+                    //set the default value of book's shelf to 'null'
                     book.shelf = 'none';
                     this.state.books.forEach((myShelfBook) => {
                         if (book.id === myShelfBook.id) {
@@ -83,7 +83,9 @@ class BooksApp extends React.Component {
                 }/>
                 <Route path='/' exact render={() => (
                     <div className="list-books">
-                        <ListBooksTitle title={title}></ListBooksTitle>
+                        <div className="list-books-title">
+                            <h1>MyReads</h1>
+                        </div>
                         <div className="list-books-content">
                             <div>
                                 <BooksShelf booksShelfTitle={current}
