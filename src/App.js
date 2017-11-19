@@ -41,7 +41,10 @@ class BooksApp extends React.Component {
             state.searchResults.forEach((book) => {
                 if (book.id === bookid) {
                     book.shelf = bookshelf;
-                    state.books.push(book);
+                    if(this.state.books.filter(item=>item.id === book.id).length === 0)
+                    {
+                        state.books.push(book);
+                    }
                     BooksAPI.update(book, bookshelf);
                 }
             })
