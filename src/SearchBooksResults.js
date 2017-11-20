@@ -12,7 +12,7 @@ class SearchBooksResults extends Component {
                     {this.props.booksResults.length !== 0&&this.props.booksResults.map((book, index)=>(
                         <li key={book.id}>
                             <div className="book">
-                                <BookTop image={book.imageLinks?book.imageLinks.thumbnail:''} status={book.shelf} id={book.id} changeBookShelf={this.props.changeBookShelf}></BookTop>
+                                <BookTop image={book.imageLinks?book.imageLinks.thumbnail:'http://via.placeholder.com/128x193?text=No%20Cover'} status={book.shelf} id={book.id} changeBookShelf={this.props.changeBookShelf}></BookTop>
                                 <BookTitle title={book.title}></BookTitle>
                                 <BookAuthors authors={book.authors||[]}></BookAuthors>
                             </div>

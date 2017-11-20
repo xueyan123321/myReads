@@ -60,7 +60,7 @@ class BooksApp extends React.Component {
         BooksAPI.search(query, 15).then((books) => {
             if (books && books.error !== 'empty query') {
                 books.forEach((book) => {
-                    //set the default value of book's shelf to 'null'
+                    //set the default value of book's shelf to 'none'
                     book.shelf = 'none';
                     this.state.books.forEach((myShelfBook) => {
                         if (book.id === myShelfBook.id) {

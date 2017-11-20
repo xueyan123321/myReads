@@ -1,16 +1,14 @@
-import React ,{ Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
-class BookCover extends Component {
-    render() {
+function BookCover({ image })  {
         return (
             <div className="book-cover" style={{
                 width: 128,
                 height: 193,
-                backgroundImage:`url('${this.props.image}')`
+                backgroundImage:`url('${image}')`
             }}></div>
         );
-    }
 }
 
 BookCover.propTypes = {
