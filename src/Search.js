@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 function Search() {
     return (
         <div className="open-search">
-            <Link to="/searchBooks">Add a book</Link>
+            <Link to="/search">Add a book</Link>
         </div>
     );
 }

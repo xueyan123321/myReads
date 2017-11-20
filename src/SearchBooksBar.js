@@ -24,9 +24,7 @@ class SearchBooksBar extends  Component{
                                     this.setState({
                                         query: e.target.value.trim()
                                     })
-                                if(e.target.value.trim()!== ''){
                                     this.props.getSearchResults(e.target.value.trim())
-                                }
                             }}/>
                 </div>
             </div>

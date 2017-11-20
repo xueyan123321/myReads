@@ -1,10 +1,11 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Switch} from 'react-router-dom';
 import * as BooksAPI from './BooksAPI';
 import SearchBooksBar from './SearchBooksBar';
 import SearchBooksResults from './SearchBooksResults';
 import BooksShelf from './BooksShelf';
 import Search from './Search';
+import NoMatch from './NoMatch'
 import './App.css';
 
 const current = 'Currently Reading';
@@ -77,35 +78,38 @@ class BooksApp extends React.Component {
     render() {
         return (
             <div className="app">
-                <Route path='/searchBooks' render={() =>
-                    (<div className="search-books">
-                        <SearchBooksBar getSearchResults={this.getSearchResults}></SearchBooksBar>
-                        <SearchBooksResults booksResults={this.state.searchResults}
-                                            changeBookShelf={this.changeBookShelf}></SearchBooksResults>
-                    </div>)
-                }/>
-                <Route path='/' exact render={() => (
-                    <div className="list-books">
-                        <div className="list-books-title">
-                            <h1>MyReads</h1>
-                        </div>
-                        <div className="list-books-content">
-                            <div>
-                                <BooksShelf booksShelfTitle={current}
-                                            books={this.state.books.filter(book => book.shelf === 'currentlyReading')}
-                                            changeBookShelf={this.changeBookShelf}></BooksShelf>
-                                <BooksShelf booksShelfTitle={want}
-                                            books={this.state.books.filter(book => book.shelf === 'wantToRead')}
-                                            changeBookShelf={this.changeBookShelf}></BooksShelf>
-                                <BooksShelf booksShelfTitle={read}
-                                            books={this.state.books.filter(book => book.shelf === 'read')}
-                                            changeBookShelf={this.changeBookShelf}></BooksShelf>
+                <Switch>
+                    <Route path='/' exact render={() => (
+                        <div className="list-books">
+                            <div className="list-books-title">
+                                <h1>MyReads</h1>
                             </div>
+                            <div className="list-books-content">
+                                <div>
+                                    <BooksShelf booksShelfTitle={current}
+                                                books={this.state.books.filter(book => book.shelf === 'currentlyReading')}
+                                                changeBookShelf={this.changeBookShelf}></BooksShelf>
+                                    <BooksShelf booksShelfTitle={want}
+                                                books={this.state.books.filter(book => book.shelf === 'wantToRead')}
+                                                changeBookShelf={this.changeBookShelf}></BooksShelf>
+                                    <BooksShelf booksShelfTitle={read}
+                                                books={this.state.books.filter(book => book.shelf === 'read')}
+                                                changeBookShelf={this.changeBookShelf}></BooksShelf>
+                                </div>
+                            </div>
+                            <Search></Search>
                         </div>
-                        <Search></Search>
-                    </div>
-                )
-                }/>
+                    )
+                    }/>
+                    <Route path='/search' render={() =>
+                        (<div className="search-books">
+                            <SearchBooksBar getSearchResults={this.getSearchResults}></SearchBooksBar>
+                            <SearchBooksResults booksResults={this.state.searchResults}
+                                                changeBookShelf={this.changeBookShelf}></SearchBooksResults>
+                        </div>)
+                    }/>
+                    <Route component={NoMatch}/>
+                </Switch>
             </div>
         )
     }
