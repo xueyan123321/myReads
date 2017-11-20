@@ -10,7 +10,7 @@ class SearchBooksResults extends Component {
             <div className="search-books-results">
                 <ol className="books-grid">
                     {this.props.booksResults.length !== 0&&this.props.booksResults.map((book, index)=>(
-                        <li key={index}>
+                        <li key={book.id}>
                             <div className="book">
                                 <BookTop image={book.imageLinks?book.imageLinks.thumbnail:''} status={book.shelf} id={book.id} changeBookShelf={this.props.changeBookShelf}></BookTop>
                                 <BookTitle title={book.title}></BookTitle>

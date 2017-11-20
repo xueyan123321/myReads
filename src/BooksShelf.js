@@ -1,17 +1,15 @@
-import React, { Component } from 'react';
+import React from 'react';
 import BooksShelfTitle from './BooksShelfTitle';
 import BooksShelfBooks from './BooksShelfBooks';
 import PropTypes from 'prop-types';
 
-class BooksShelf extends Component {
-    render() {
+function BooksShelf ({booksShelfTitle, books, changeBookShelf}){
         return (
             <div className="bookshelf">
-                <BooksShelfTitle title={this.props.booksShelfTitle}></BooksShelfTitle>
-                <BooksShelfBooks books={this.props.books} changeBookShelf={this.props.changeBookShelf}></BooksShelfBooks>
+                <BooksShelfTitle title={booksShelfTitle}></BooksShelfTitle>
+                <BooksShelfBooks books={books} changeBookShelf={changeBookShelf}></BooksShelfBooks>
             </div>
         )
-    }
 }
 
 BooksShelf.propTypes = {

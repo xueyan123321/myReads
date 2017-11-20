@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 function BookAuthors(props){
     return (
         <div className="book-authors">
-            {props.authors.join(' , ')}
+            {props.authors.join(', ')}
         </div>
     );
 }
