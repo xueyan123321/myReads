@@ -1,7 +1,6 @@
 # MyReads Project
 
-This is the my final assessment project for Udacity's React Fundamentals course. All functionalities are verified by me. I focus on the javascript to process the interacity aspect. If you are interested in the html and css, please refer to <a href="https://github.com/udacity/reactnd-project-myreads-starter"></a>
-
+This is the my final assessment project for Udacity's React Fundamentals course. All functionalities are verified by me. I focus on the javascript to process the interacity aspect. The original project are from [udacity](https://github.com/udacity/reactnd-project-myreads-starter)
 ## TL;DR
 
 To get started developing right away:
@@ -22,8 +21,7 @@ To get started developing right away:
 
 ## Backend Server
 
-To simplify your development process, we've provided a backend server for you to develop against. The provided file [`BooksAPI.js`](src/BooksAPI.js) contains the methods you will need to perform necessary operations on the backend:
-
+The provided file [`BooksAPI.js`](src/BooksAPI.js) contains all the methods I try to use 
 * [`getAll`](#getall)
 * [`update`](#update)
 * [`search`](#search)
