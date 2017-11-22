@@ -57,22 +57,27 @@ class BooksApp extends React.Component {
      * @param {string} query - the query message that user inputs
      */
     getSearchResults = (query) => {
-        BooksAPI.search(query, 15).then((books) => {
-            if (books && books.error !== 'empty query') {
-                books.forEach((book) => {
-                    //set the default value of book's shelf to 'none'
-                    book.shelf = 'none';
-                    this.state.books.forEach((myShelfBook) => {
-                        if (book.id === myShelfBook.id) {
-                            book.shelf = myShelfBook.shelf;
-                        }
-                    });
-                })
-            } else {
-                books = [];
-            }
-            this.setState({searchResults: books});
-        })
+        console.log('query', query)
+        if(query){
+            BooksAPI.search(query, 15).then((books) => {
+                if (books.error !== 'empty query') {
+                    books.forEach((book) => {
+                        //set the default value of book's shelf to 'none'
+                        book.shelf = 'none';
+                        this.state.books.forEach((myShelfBook) => {
+                            if (book.id === myShelfBook.id) {
+                                book.shelf = myShelfBook.shelf;
+                            }
+                        });
+                    })
+                } else {
+                    books = [];
+                }
+                this.setState({searchResults: books});
+            })
+        } else {
+            this.setState({searchResults: []})
+        }
     }
 
     render() {
