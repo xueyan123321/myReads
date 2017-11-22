@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import BookTop from './BookTop';
-import BookTitle from './BookTitle';
-import BookAuthors from './BookAuthors';
+import Book from './Book';
 import PropTypes from 'prop-types';
 
 class SearchBooksResults extends Component {
@@ -11,11 +9,7 @@ class SearchBooksResults extends Component {
                 <ol className="books-grid">
                     {this.props.booksResults.length !== 0&&this.props.booksResults.map((book, index)=>(
                         <li key={book.id}>
-                            <div className="book">
-                                <BookTop image={book.imageLinks?book.imageLinks.thumbnail:'http://via.placeholder.com/128x193?text=No%20Cover'} status={book.shelf} id={book.id} changeBookShelf={this.props.changeBookShelf}></BookTop>
-                                <BookTitle title={book.title}></BookTitle>
-                                <BookAuthors authors={book.authors||[]}></BookAuthors>
-                            </div>
+                            <Book book={book} changeBookShelf={this.props.changeBookShelf}></Book>
                         </li>
                     ))}
                 </ol>
@@ -25,7 +19,8 @@ class SearchBooksResults extends Component {
 }
 
 SearchBooksResults.propTypes ={
-    booksResults: PropTypes.array.isRequired
+    booksResults: PropTypes.array.isRequired,
+    changeBookShelf: PropTypes.func.isRequired
 }
 
 export default SearchBooksResults;
